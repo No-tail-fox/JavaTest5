@@ -1,0 +1,286 @@
+"iam":
+  icon: IAM
+  sort: 1
+  site:
+    - "organization":
+        icon: manage_organization
+        Routes: /iam/organization
+        sort: 1
+        permission:
+          - 'iam-service.organization.list'
+          - 'organization-service.organization.create'
+          - 'iam-service.organization.query'
+          - 'iam-service.organization.update'
+          - 'iam-service.organization.disableOrganization'
+          - 'iam-service.organization.enableOrganization'
+    - "system-setting":
+        icon: settings
+        Routes: /iam/system-setting
+        sort: 10
+        permission:
+          - 'iam-service.system-setting.addSetting'
+          - 'iam-service.system-setting.updateSetting'
+          - 'iam-service.system-setting.resetSetting'
+          - 'iam-service.system-setting.uploadFavicon'
+          - 'iam-service.system-setting.uploadLogo'
+    - "menu-management":
+        icon: view_list
+        Routes: /iam/menu-setting
+        sort: 6
+        permission:
+          - 'iam-service.menu.create'
+          - 'iam-service.menu.saveListTree'
+          - 'iam-service.menu.query'
+          - 'iam-service.menu.update'
+          - 'iam-service.menu.delete'
+    - "role-label":
+        icon: role_tag
+        Routes: /iam/role-label
+        sort: 2
+        permission:
+          - 'iam-service.label.listByType'
+    - "role":
+        icon: assignment_ind
+        Routes: /iam/role
+        sort: 3
+        permission:
+          - 'iam-service.role.create'
+          - 'iam-service.role.createBaseOnRoles'
+          - 'iam-service.role.check'
+          - 'iam-service.role.list'
+          - 'iam-service.role-member.listRolesWithUserCountOnSiteLevel'
+          - 'iam-service.role.queryWithPermissionsAndLabels'
+          - 'iam-service.role.update'
+          - 'iam-service.role.disableRole'
+          - 'iam-service.role.enableRole'
+          - 'iam-service.role-member.pagingQueryUsersByRoleIdOnSiteLevel'
+    - "member-role-global":
+        icon: person_add
+        Routes: /iam/member-role
+        sort: 4
+        permission:
+          - 'iam-service.role-member.createOrUpdateOnSiteLevel'
+          - 'iam-service.role-member.deleteOnSiteLevel'
+          - 'iam-service.role-member.pagingQueryUsersByRoleIdOnSiteLevel'
+          - 'iam-service.role-member.listRolesWithUserCountOnSiteLevel'
+          - 'iam-service.role-member.pagingQueryUsersWithSiteLevelRoles'
+          - 'iam-service.role-member.listRolesWithClientCountOnSiteLevel'
+          - 'iam-service.role-member.listRolesWithClientCountOnSiteLevel'
+          - 'iam-service.role-member.pagingQueryClientsWithSiteLevelRoles'
+    - "root-user":
+        icon: root
+        Routes: /iam/root-user
+        sort: 5
+        permission:
+          - 'iam-service.user.pagingQueryAdminUsers'
+          - 'iam-service.user.addDefaultUsers'
+          - 'iam-service.user.deleteDefaultUser'
+    - "dashboard-management":
+        icon: donut_small
+        Routes: /iam/dashboard-setting
+        sort: 7
+        permission:
+          - 'iam-service.dashboard.list'
+          - 'iam-service.dashboard.query'
+          - 'iam-service.dashboard.update'
+    - "project-type":
+        icon: project_list
+        Routes: /iam/project-type
+        sort: 8
+        permission:
+        - 'iam-service.project-type.pagingQuery'
+        - 'iam-service.project-type.create'
+        - 'iam-service.project-type.check'
+        - 'iam-service.project-type.update'
+
+# 组织设置
+"rentsetting":
+  icon: IAM
+  sort: 2
+  organization:
+    - "project":
+        icon: manage_project
+        Routes: /iam/project
+        sort: 1
+        permission:
+          - 'iam-service.organization-project.list'
+          - 'iam-service.organization-project.create'
+          - 'iam-service.organization-project.update'
+          - 'iam-service.organization-project.check'
+          - 'iam-service.organization-project.enableProject'
+          - 'iam-service.organization-project.disableProject'
+    - "user":
+        icon: manage_person
+        Routes: /iam/user
+        sort: 2
+        permission:
+          - 'iam-service.organization-user.create'
+          - 'iam-service.organization-user.list'
+          - 'iam-service.organization-user.query'
+          - 'iam-service.organization-user.update'
+          - 'iam-service.organization-user.delete'
+          - 'iam-service.organization-user.disableUser'
+          - 'iam-service.organization-user.enableUser'
+          - 'iam-service.organization-user.unlock'
+          - 'iam-service.organization-user.resetUserPassword'
+    - "member-role-organization":
+        icon: person_add
+        Routes: /iam/member-role
+        sort: 3
+        permission:
+          - 'iam-service.role-member.createOrUpdateOnOrganizationLevel'
+          - 'iam-service.role-member.deleteOnOrganizationLevel'
+          - 'iam-service.role-member.listRolesWithUserCountOnOrganizationLevel'
+          - 'iam-service.role-member.pagingQueryUsersByRoleIdOnOrganizationLevel'
+          - 'iam-service.role-member.pagingQueryUsersWithOrganizationLevelRoles'
+          - 'iam-service.role-member.listRolesWithClientCountOnOrganizationLevel'
+          - 'iam-service.role-member.pagingQueryClientsByRoleIdOnOrganizationLevel'
+          - 'iam-service.role-member.pagingQueryClientsWithOrganizationLevelRoles'
+    - "client":
+        icon: laptop_mac
+        Routes: /iam/client
+        sort: 4
+        permission:
+          - 'iam-service.client.check'
+          - 'iam-service.client.create'
+          - 'iam-service.client.delete'
+          - 'iam-service.client.list'
+          - 'iam-service.client.query'
+          - 'iam-service.client.queryByName'
+          - 'iam-service.client.update'
+    - "ldap":
+        icon: device_hub
+        Routes: /iam/ldap
+        sort: 5
+        permission:
+          - 'iam-service.ldap.create'
+          - 'iam-service.ldap.query'
+          - 'iam-service.ldap.queryByOrgId'
+          - 'iam-service.ldap.disableLdap'
+          - 'iam-service.ldap.enableLdap'
+          - 'iam-service.ldap.syncUsers'
+          - 'iam-service.ldap.testConnect'
+          - 'iam-service.ldap.update'
+          - 'iam-service.ldap.pagingQueryHistories'
+          - 'iam-service.ldap.pagingQueryErrorUsers'
+    - "password-policy":
+        icon: password
+        Routes: /iam/password-policy
+        sort: 6
+        permission:
+          - 'iam-service.password-policy.create'
+          - 'iam-service.password-policy.queryByOrganizationId'
+          - 'iam-service.password-policy.update'
+    - "organization-setting":
+        icon: settings_applications
+        Routes: /iam/organization-setting
+        sort: 10
+        permission:
+          - 'iam-service.organization.queryOrgLevel'
+
+# 组织层应用
+"app-manager-organization":
+  icon: apps
+  sort: 5
+  organization:
+    - "app":
+        icon: widgets
+        Routes: /iam/application
+        sort: 1
+        permission:
+          - 'iam-service.application.pagingQuery'
+          - 'iam-service.application.create'
+          - 'iam-service.application.types'
+          - 'iam-service.application.update'
+          - 'iam-service.application.disable'
+          - 'iam-service.application.enabled'
+
+# 项目设置
+"prosetting":
+  icon: IAM
+  sort: 6
+  project:
+    - "member-role-project":
+        icon: person_add
+        Routes: /iam/member-role
+        sort: 1
+        permission:
+          - 'iam-service.role-member.createOrUpdateOnSiteLevel'
+          - 'iam-service.role-member.deleteOnProjectLevel'
+          - 'iam-service.role-member.listRolesWithUserCountOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryUsersByRoleIdOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryUsersWithProjectLevelRoles'
+          - 'iam-service.role-member.listRolesWithClientCountOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryClientsWithProjectLevelRoles'
+          - 'iam-service.role-member.pagingQueryClientsByRoleIdOnProjectLevel'
+    - "proManage":
+        icon: settings_applications
+        Routes: /iam/project-setting
+        sort: 2
+        permission:
+          - 'iam-service.project.disableProject'
+          - 'iam-service.project.query'
+          - 'iam-service.project.update'
+
+# 项目群设置
+"program-setting":
+  icon: IAM
+  sort: 6
+  project:
+    - "member-role-program":
+        icon: person_add
+        Routes: /iam/member-role
+        sort: 1
+        category: PROGRAM
+        permission:
+          - 'iam-service.role-member.createOrUpdateOnSiteLevel'
+          - 'iam-service.role-member.deleteOnProjectLevel'
+          - 'iam-service.role-member.listRolesWithUserCountOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryUsersByRoleIdOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryUsersWithProjectLevelRoles'
+          - 'iam-service.role-member.listRolesWithClientCountOnProjectLevel'
+          - 'iam-service.role-member.pagingQueryClientsWithProjectLevelRoles'
+          - 'iam-service.role-member.pagingQueryClientsByRoleIdOnProjectLevel'
+    - "program-manage":
+        icon: settings_applications
+        Routes: /iam/project-setting
+        sort: 2
+        category: PROGRAM
+        permission:
+          - 'iam-service.project.disableProject'
+          - 'iam-service.project.query'
+          - 'iam-service.project.update'
+
+# 个人中心
+"usercenter":
+  icon: accessibility
+  sort: 1
+  user:
+    - "user-info":
+        icon: person
+        Routes: /iam/user-info
+        sort: 1
+        permission:
+          - 'iam-service.user.queryInfo'
+          - 'iam-service.user.updateInfo'
+          - 'iam-service.user.uploadPhoto'
+          - 'iam-service.user.querySelf'
+    - "password":
+        icon: vpn_key
+        Routes: /iam/password
+        sort: 2
+        permission:
+          - 'iam-service.user.selfUpdatePassword'
+    - "permission-info":
+        icon: authority
+        Routes: /iam/permission-info
+        sort: 3
+        permission:
+        - 'iam-service.user.pagingQueryRole'
+    - "token-manager":
+        icon: token
+        Routes: /iam/token-manager
+        sort: 4
+        permission:
+          - 'iam-service.access-token.list'
+          - 'iam-service.access-token.delete'

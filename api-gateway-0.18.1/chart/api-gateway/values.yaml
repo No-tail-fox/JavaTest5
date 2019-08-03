@@ -1,0 +1,75 @@
+# Default values for api-gateway.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: registry.cn-hangzhou.aliyuncs.com/choerodon-framework/api-gateway
+  pullPolicy: IfNotPresent
+
+preJob:
+  timeout: 300
+  image: registry.cn-hangzhou.aliyuncs.com/choerodon-tools/dbtool:0.6.4
+  preConfig:
+    enabled: true
+    configFile: application.yml
+    configType: k8s
+    registerHost: http://register-server:8000
+    datasource:
+      url: jdbc:mysql://localhost:3306/manager_service?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: username
+      password: password
+
+deployment:
+  managementPort: 8081
+
+env:
+  open:
+    SPRING_CLOUD_CONFIG_ENABLED: true
+    SPRING_CLOUD_CONFIG_URI: http://register-server.io-choerodon:8000/
+    SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1/iam_service?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    SPRING_DATASOURCE_USERNAME: username
+    SPRING_DATASOURCE_PASSWORD: password
+    SPRING_CACHE_MULTI_L1_ENABLED: true
+    SPRING_CACHE_MULTI_L2_ENABLED: false
+    SPRING_REDIS_HOST: localhost
+    SPRING_REDIS_PORT: 6379
+    SPRING_REDIS_DATABASE: 4
+    EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://register-server.io-choerodon:8000/eureka/
+    CHOERODON_GATEWAY_ALLOWED_ORIGIN: '*'
+    # skywalking 代理端配置
+    #     SKYWALKING_OPTS: >-
+    #       -javaagent:/agent/skywalking-agent.jar
+    #       -Dskywalking.agent.service_name=api-gateway
+    #       -Dskywalking.agent.sample_n_per_3_secs=-1
+    #       -Dskywalking.collector.backend_service=oap.skywalking:11800
+
+service:
+  enabled: false
+  type: ClusterIP
+  port: 8080
+  name: api-gateway
+
+ingress:
+  enabled: false
+  host: gateway.choerodon.com.cn
+
+metrics:
+  path: /actuator/prometheus
+  group: spring-boot
+
+logs:
+  parser: spring-boot
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources,such as Minikube. If you do want to specify resources,uncomment the following
+  # lines,adjust them as necessary,and remove the curly braces after 'resources:'.
+  limits:
+    # cpu: 100m
+    memory: 2Gi
+  requests:
+    # cpu: 100m
+    memory: 1Gi

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.choerodon.iam.infra.mapper.OrganMapper">
+    <select id="queryById" resultType="io.choerodon.iam.infra.dto.OrganizationDTO" parameterType="Long">
+        SELECT
+        *
+        FROM
+        TODO_ORGANIZATION
+        WHERE
+        ID=#{id} limit 1
+    </select>
+
+
+    <insert id="insertOrgan" useGeneratedKeys="true" keyProperty="io.choerodon.iam.infra.dto.OrganizationDTO" parameterType="io.choerodon.iam.infra.dto.OrganizationDTO">
+       insert into TODO_ORGANIZATION(name,code,address,ownerLoginName,ownerRealName,ownerEmail) values (#{name},#{code},#{address},#{ownerLoginName},#{ownerRealName},#{ownerEmail})
+    </insert>
+
+    <insert id="insertProject" parameterType="java.util.List">
+        insert into FD_PROJECT
+        (
+          NAME,CODE,TYPE,ORGANIZATION_ID,category,LAST_UPDATED_BY,IS_ENABLED,OBJECT_VERSION_NUMBER,CREATED_BY
+        )
+        values
+        <foreach collection="list" item="item" index= "index" separator =",">
+            (
+            #{item.name},
+            #{item.code},
+            #{item.type},
+            #{item.organizationId},
+            #{item.category},
+            1,1,1,1
+            )
+        </foreach>
+
+    </insert>
+
+
+    <select id="queryProject" resultType="io.choerodon.iam.infra.dto.ProjectDTO">
+        SELECT
+        *
+        FROM
+        FD_PROJECT
+    </select>
+</mapper>

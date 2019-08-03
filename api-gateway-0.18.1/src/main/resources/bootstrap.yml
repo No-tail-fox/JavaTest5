@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-25236-wkj
+  cloud:
+      config:
+        failFast: true
+        uri: http://localhost:8010
+        enabled: false
+        retry:
+          maxAttempts: 6
+          multiplier: 1.1
+          maxInterval: 2000
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: '*'
